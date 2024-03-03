@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/trip")
 public class TripController {
@@ -38,5 +40,20 @@ public class TripController {
     @PostMapping("/shareTrip/{id}")
     public String shareTrip(@PathVariable int id, @RequestParam String email, ModelMap model, HttpSession session) {
         return tripService.shareTrip(id, email, model, session);
+    }
+
+    @GetMapping("/deleteTrip/{id}")
+    public String deleteTrip(@PathVariable int id, ModelMap model, HttpSession session){
+        return tripService.deleteTrip(id, model, session);
+    }
+
+    @GetMapping("/editTrip/{id}")
+    public String editTrip(@PathVariable int id, ModelMap model, HttpSession session){
+        return tripService.editTrip(id, model, session);
+    }
+
+    @PostMapping("/updateTrip")
+    public String updateBook(Trip trip, @RequestParam String start_date, @RequestParam String end_date, ModelMap model, HttpSession session) {
+        return tripService.updateTrip(trip, start_date, end_date, model, session);
     }
 }

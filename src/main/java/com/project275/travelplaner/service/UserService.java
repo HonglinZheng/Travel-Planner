@@ -37,7 +37,7 @@ public class UserService {
         } else {
             if (user.getPassword().equals(info.getPassword())){
                 model.put("pos", "Login Success");
-                session.setAttribute("user", user);
+                session.setAttribute("user", user.getId());
                 session.setMaxInactiveInterval(120);
                 model.put("trips", user.getTrips());
                 return "UserHome";
