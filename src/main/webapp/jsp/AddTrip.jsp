@@ -9,17 +9,16 @@
 <body>
 <h1 style="color:red">${neg}</h1>
 <h1 style="color:green">${pos}</h1>
-<h1>Add Book Details</h1>
-<form action="/librarian/addbook" method="post" enctype="multipart/form-data">
-    Name:<input type="text" name="name"><br> Author:<input
-        type="text" name="author"><br> Price:<input type="text"
-                                                    name="price"><br>
-    Quantity:<input type="text" name="quantity"><br>
-    Picture:<input type="file" name="pic"><br>
+<h1>Add Trip Details</h1>
+<form action="/trip/addTrip" method="post" enctype="multipart/form-data">
+    Name:<input type="text" name="name"><br>
+    Budget: <input type="number" name="budget" step="0.01"><br>
+    Start Date:<input type="date" name="start_date"><br>
+    End Date:<input type="date" name="end_date"><br>
     <button>Add</button>
     <button type="reset">Cancel</button>
 </form>
 <br>
-<a href="/jsp/LibrarianHome.jsp"><button>Back</button></a>
+<a href="/jsp/UserHome.jsp"><button>Back</button></a>
 </body>
 </html>

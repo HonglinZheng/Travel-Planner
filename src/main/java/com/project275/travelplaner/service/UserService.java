@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -21,8 +20,6 @@ public class UserService {
     public String signup(User user, String date, ModelMap model) throws IOException {
         if (userRepo.findByEmail(user.getEmail()) == null) {
             user.setDob(LocalDate.parse(date));
-            user.setPassword(user.getPassword());
-
             userRepo.save(user);
             model.put("pos", "Signup Succeed");
             return "Login";
@@ -42,6 +39,7 @@ public class UserService {
                 model.put("pos", "Login Success");
                 session.setAttribute("user", user);
                 session.setMaxInactiveInterval(120);
+                model.put("trips", user.getTrips());
                 return "UserHome";
             }
             else {

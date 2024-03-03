@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginStudent(LoginInfo info, ModelMap model, HttpSession session) {
+    public String login(LoginInfo info, ModelMap model, HttpSession session) {
         return userService.login(info, model, session);
     }
 }
