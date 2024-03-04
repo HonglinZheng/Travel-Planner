@@ -2,7 +2,6 @@ package com.project275.travelplaner.entity;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,14 +12,13 @@ import lombok.Data;
 @Data
 @Component
 @EqualsAndHashCode(exclude="trips")
-@ToString(exclude = "trips")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String email;
-    private long mobile;
+    private String mobile;
     private String password;
     private LocalDate dob;
 

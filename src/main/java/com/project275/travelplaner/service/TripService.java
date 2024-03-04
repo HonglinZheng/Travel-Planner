@@ -95,7 +95,7 @@ public class TripService {
         return "UserHome";
     }
 
-    public String editTrip(int id, ModelMap model, HttpSession session){
+    public String gotoEditTrip(int id, ModelMap model, HttpSession session){
         if (session.getAttribute("user") == null) {
             model.put("neg", "Invalid Session");
             return "Home";
@@ -137,5 +137,27 @@ public class TripService {
         curUser = userRepo.findById(curUserId).get();
         model.put("trips", curUser.getTrips());
         return "UserHome";
+    }
+
+    public String gotoUserHome(ModelMap model, HttpSession session){
+        if (session.getAttribute("user") == null) {
+            model.put("neg", "Invalid Session");
+            return "Home";
+        }
+        int curUserId = (int) session.getAttribute("user");
+        User curUser = userRepo.findById(curUserId).get();
+        model.put("trips", curUser.getTrips());
+        return "UserHome";
+    }
+
+    public String viewItinerary(int id, ModelMap model, HttpSession session){
+        if (session.getAttribute("user") == null) {
+            model.put("neg", "Invalid Session");
+            return "Home";
+        }
+        Trip trip = tripRepo.findById(id).orElse(null);
+        model.put("itineraries", trip.getItineraries());
+        model.put("tripId", trip.getId());
+        return "ViewItineraries";
     }
 }

@@ -1,6 +1,7 @@
 package com.project275.travelplaner.controller;
 
 import com.project275.travelplaner.entity.Trip;
+import com.project275.travelplaner.entity.User;
 import com.project275.travelplaner.service.TripService;
 import com.project275.travelplaner.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -21,39 +22,49 @@ public class TripController {
     @Autowired
     TripService tripService;
 
-    @GetMapping("/addTrip")
+    @GetMapping("/add")
     public String gotoAddTrip() {
         return "AddTrip";
     }
 
-    @PostMapping("/addTrip")
+    @PostMapping("/add")
     public String addTrip(Trip trip, @RequestParam String start_date, @RequestParam String end_date, ModelMap model, HttpSession session) {
         return tripService.addTrip(trip, start_date, end_date, model, session);
     }
 
-    @GetMapping("/shareTrip/{id}")
+    @GetMapping("/share/{id}")
     public String gotoShareTrip(@PathVariable int id, ModelMap model) {
         model.put("id", id);
         return "ShareTrip";
     }
 
-    @PostMapping("/shareTrip/{id}")
+    @PostMapping("/share/{id}")
     public String shareTrip(@PathVariable int id, @RequestParam String email, ModelMap model, HttpSession session) {
         return tripService.shareTrip(id, email, model, session);
     }
 
-    @GetMapping("/deleteTrip/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteTrip(@PathVariable int id, ModelMap model, HttpSession session){
         return tripService.deleteTrip(id, model, session);
     }
 
-    @GetMapping("/editTrip/{id}")
-    public String editTrip(@PathVariable int id, ModelMap model, HttpSession session){
-        return tripService.editTrip(id, model, session);
+    @GetMapping("/edit/{id}")
+    public String gotoEditTrip(@PathVariable int id, ModelMap model, HttpSession session){
+        return tripService.gotoEditTrip(id, model, session);
     }
 
-    @PostMapping("/updateTrip")
-    public String updateBook(Trip trip, @RequestParam String start_date, @RequestParam String end_date, ModelMap model, HttpSession session) {
+    @PostMapping("/update")
+    public String updateTrip(Trip trip, @RequestParam String start_date, @RequestParam String end_date, ModelMap model, HttpSession session) {
         return tripService.updateTrip(trip, start_date, end_date, model, session);
+    }
+
+    @GetMapping("/view/{id}")
+    public String viewItinerary(@PathVariable int id, ModelMap model, HttpSession session){
+        return tripService.viewItinerary(id, model, session);
+    }
+
+    @GetMapping("/home")
+    public String gotoUserHome(ModelMap model, HttpSession session){
+        return tripService.gotoUserHome(model, session);
     }
 }

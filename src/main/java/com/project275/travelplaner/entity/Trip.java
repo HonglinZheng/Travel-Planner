@@ -12,8 +12,7 @@ import java.util.*;
 @Component
 @Entity
 @Data
-@EqualsAndHashCode(exclude="users")
-@ToString(exclude = "users")
+@EqualsAndHashCode(exclude = {"users", "itineraries"})
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +24,7 @@ public class Trip {
 
     @ManyToMany(mappedBy = "trips", fetch = FetchType.EAGER)
     Set<User> users = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.EAGER)
+    List<Itinerary> itineraries = new ArrayList<>();
 }

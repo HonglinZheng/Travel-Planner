@@ -30,9 +30,9 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signup(User user, @RequestParam String date, ModelMap model)
+    public String signup(User user, ModelMap model)
             throws IOException {
-        return userService.signup(user, date, model);
+        return userService.signup(user, model);
     }
 
     @PostMapping("/login")

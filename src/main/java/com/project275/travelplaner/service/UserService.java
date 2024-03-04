@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 @Service
 public class UserService {
@@ -17,9 +16,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    public String signup(User user, String date, ModelMap model) throws IOException {
+    public String signup(User user, ModelMap model) throws IOException {
         if (userRepo.findByEmail(user.getEmail()) == null) {
-            user.setDob(LocalDate.parse(date));
             userRepo.save(user);
             model.put("pos", "Signup Succeed");
             return "Login";
@@ -38,7 +36,7 @@ public class UserService {
             if (user.getPassword().equals(info.getPassword())){
                 model.put("pos", "Login Success");
                 session.setAttribute("user", user.getId());
-                session.setMaxInactiveInterval(120);
+                session.setMaxInactiveInterval(1200);
                 model.put("trips", user.getTrips());
                 return "UserHome";
             }

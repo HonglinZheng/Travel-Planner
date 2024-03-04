@@ -4,21 +4,21 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Add Book</title>
+    <title>Add Trip</title>
 </head>
 <body>
 <h1 style="color:red">${neg}</h1>
 <h1 style="color:green">${pos}</h1>
 <h1>Add Trip Details</h1>
-<form action="/trip/addTrip" method="post" enctype="multipart/form-data">
-    Name:<input type="text" name="name"><br>
-    Budget: <input type="number" name="budget" step="0.01"><br>
-    Start Date:<input type="date" name="start_date"><br>
-    End Date:<input type="date" name="end_date"><br>
+<form action="/trip/add" method="post" enctype="multipart/form-data">
+    Name:<input type="text" name="name" required><br>
+    Budget: <input type="number" name="budget" step="0.01" value=0.0><br>
+    Start Date:<input type="date" name="start_date" required><br>
+    End Date:<input type="date" name="end_date" required><br>
     <button>Add</button>
     <button type="reset">Cancel</button>
 </form>
 <br>
-<a href="/jsp/UserHome.jsp"><button>Back</button></a>
+<a href="/trip/home"><button>Back</button></a>
 </body>
 </html>

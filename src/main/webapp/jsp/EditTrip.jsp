@@ -4,22 +4,22 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Add Book</title>
+    <title>Edit Trip</title>
 </head>
 <body>
 <h1 style="color: red">${neg}</h1>
 <h1 style="color: green">${pos}</h1>
 <h1>Edit Trip Details</h1>
-<form action="/trip/updateTrip" method="post">
+<form action="/trip/update" method="post">
     <input type="text" name="id" value="${trip.getId()}" hidden="">
-    Name:<input type="text" name="name" value="${trip.getName()}"><br>
+    Name:<input type="text" name="name" value="${trip.getName()}" required><br>
     Budget: <input type="number" name="budget" step="0.01" value="${trip.getBudget()}"><br>
-    Start Date:<input type="date" name="start_date" value="${trip.getStartDate()}"><br>
-    End Date:<input type="date" name="end_date" value="${trip.getEndDate()}"><br>
+    Start Date:<input type="date" name="start_date" value="${trip.getStartDate()}" required><br>
+    End Date:<input type="date" name="end_date" value="${trip.getEndDate()}" required><br>
     <button>Update</button>
     <button type="reset">Cancel</button>
 </form>
 <br>
-<a href="/jsp/UserHome.jsp"><button>Back</button></a>
+<a href="/trip/home"><button>Back</button></a>
 </body>
 </html>

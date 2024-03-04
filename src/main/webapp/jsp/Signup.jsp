@@ -17,27 +17,27 @@
 
             <tr>
                 <th>Name:</th>
-                <th><input type="text" name="name"></th>
+                <th><input type="text" name="name" required></th>
             </tr>
 
             <tr>
                 <th>Email:</th>
-                <th><input type="email" name="email"></th>
+                <th><input type="email" name="email" required></th>
             </tr>
 
             <tr>
                 <th>Mobile:</th>
-                <th><input type="number" name="mobile"></th>
+                <th><input type="text" name="mobile"></th>
             </tr>
 
             <tr>
                 <th>Password:</th>
-                <th><input type="password" name="password"></th>
+                <th><input type="password" name="password" required></th>
             </tr>
 
             <tr>
                 <th><label>DOB: </label></th>
-                <th><input type="date" name="date"></th>
+                <th><input type="date" name="dob"></th>
             </tr>
 
             <tr>

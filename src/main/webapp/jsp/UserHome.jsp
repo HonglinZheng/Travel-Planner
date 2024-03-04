@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Home</title>
+    <title>User Home</title>
 </head>
 <body>
 <h1 style="color:red">${neg}</h1>
@@ -22,6 +22,7 @@
         <th>Edit</th>
         <th>Delete</th>
         <th>Share</th>
+        <th>View</th>
     </tr>
     <%
         for (Trip t : trips) {
@@ -31,15 +32,16 @@
         <th><%=t.getStartDate()%></th>
         <th><%=t.getEndDate()%></th>
         <th><%=t.getBudget()%></th>
-        <th><a href="/trip/editTrip/<%=t.getId()%>"><button>Edit</button></a></th>
-        <th><a href="/trip/deleteTrip/<%=t.getId()%>"><button>Delete</button></a></th>
-        <th><a href="/trip/shareTrip/<%=t.getId()%>"><button>Share</button></a></th>
+        <th><a href="/trip/edit/<%=t.getId()%>"><button>Edit</button></a></th>
+        <th><a href="/trip/delete/<%=t.getId()%>"><button>Delete</button></a></th>
+        <th><a href="/trip/share/<%=t.getId()%>"><button>Share</button></a></th>
+        <th><a href="/trip/view/<%=t.getId()%>"><button>View</button></a></th>
     </tr>
     <%
         }
     %>
 </table><br>
-<a href="/trip/addTrip"><button>Create Travel</button></a>
+<a href="/trip/add"><button>Create Travel</button></a>
 <a href="/logout"><button>Logout</button></a>
 </body>
 </html>
