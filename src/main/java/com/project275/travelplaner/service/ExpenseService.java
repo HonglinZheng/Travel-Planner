@@ -48,21 +48,8 @@ public class ExpenseService {
             return "Home";
         }
 
-        int curId = (int) session.getAttribute("user");
-        User curUser = userRepo.findById(curId).get();
-        Itinerary itinerary = itineraryRepo.findById(itineraryId).orElse(null);
         Trip trip = tripRepo.findById(tripId).orElse(null);
-        Expense oExpenseLog = expenseRepo.findById(expenseLog.getId()).orElse(null);
-        oExpenseLog.setTransportationExpense(expenseLog.getTransportationExpense());
-        oExpenseLog.setAccommodationExpense(expenseLog.getAccommodationExpense());
-        oExpenseLog.setMealsExpense(expenseLog.getMealsExpense());
-        oExpenseLog.setActivitiesExpense(expenseLog.getActivitiesExpense());
-
-        itinerary.setExpenseLog(oExpenseLog);
-        oExpenseLog.setItinerary(itinerary);
-        itineraryRepo.save(itinerary);
-        expenseRepo.save(oExpenseLog);
-
+        expenseRepo.save(expenseLog);
         model.put("pos", "Expenses are Logged Successfully");
         model.put("itineraries", trip.getItineraries());
         return "ViewItineraries";
