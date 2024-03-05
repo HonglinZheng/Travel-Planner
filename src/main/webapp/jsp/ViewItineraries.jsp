@@ -12,6 +12,19 @@
 <h1 style="color:green">${pos}</h1>
 <%
     List<Itinerary> itineraries = (List<Itinerary>) request.getAttribute("itineraries");
+    double totalTransportationExpense = 0.0;
+    double totalAccommodationExpense = 0.0;
+    double totalMealsExpense = 0.0;
+    double totalActivitiesExpense = 0.0;
+
+    for (Itinerary i : itineraries) {
+        if (i.getExpenseLog() != null){
+            totalTransportationExpense += i.getExpenseLog().getTransportationExpense();
+            totalAccommodationExpense += i.getExpenseLog().getAccommodationExpense();
+            totalMealsExpense += i.getExpenseLog().getMealsExpense();
+            totalActivitiesExpense += i.getExpenseLog().getActivitiesExpense();
+        }
+    }
 %>
 <table border="1">
     <tr>
@@ -45,6 +58,13 @@
         }
     %>
 </table><br>
+<!-- Display Total Expenses -->
+<h2>Total Expense</h2>
+<p>Transportation Expense: <%= totalTransportationExpense %></p>
+<p>Accommodation Expense: <%= totalAccommodationExpense %></p>
+<p>Meals Expense: <%= totalMealsExpense %></p>
+<p>Activities Expense: <%= totalActivitiesExpense %></p>
+
 <a href="/itinerary/add/${tripId}"><button>Create Itinerary</button></a>
 <a href="/trip/home"><button>Back</button></a>
 </body>
