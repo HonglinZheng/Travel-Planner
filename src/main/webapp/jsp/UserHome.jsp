@@ -19,6 +19,7 @@
         <th>Start Date</th>
         <th>End Date</th>
         <th>Budget</th>
+        <th>Track Budget</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>Share</th>
@@ -32,6 +33,7 @@
         <th><%=t.getStartDate()%></th>
         <th><%=t.getEndDate()%></th>
         <th><%=t.getBudget()%></th>
+        <th><a href="/trip/editBudget/<%=t.getId()%>"><button>Edit Budget</button></a></th>
         <th><a href="/trip/edit/<%=t.getId()%>"><button>Edit</button></a></th>
         <th><a href="/trip/delete/<%=t.getId()%>"><button>Delete</button></a></th>
         <th><a href="/trip/share/<%=t.getId()%>"><button>Share</button></a></th>
