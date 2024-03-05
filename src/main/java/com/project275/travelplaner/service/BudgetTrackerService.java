@@ -54,17 +54,7 @@ public class BudgetTrackerService {
             return "UserHome";
         }
 
-        BudgetTracker oBudgetTracker = budgetTrackerRepo.findById(budgetTracker.getId()).orElse(null);
-        oBudgetTracker.setTransportationBudget(budgetTracker.getTransportationBudget());
-        oBudgetTracker.setAccommodationBudget(budgetTracker.getAccommodationBudget());
-        oBudgetTracker.setMealsBudget(budgetTracker.getMealsBudget());
-        oBudgetTracker.setActivitiesBudget(budgetTracker.getActivitiesBudget());
-
-        trip.setBudgetTrack(oBudgetTracker);
-        oBudgetTracker.setTrip(trip);
-        tripRepo.save(trip);
-        budgetTrackerRepo.save(oBudgetTracker);
-
+        budgetTrackerRepo.save(budgetTracker);
         model.put("pos", "Budget Tracker Added Successfully");
         model.put("trips", curUser.getTrips());
         return "UserHome";
