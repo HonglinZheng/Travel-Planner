@@ -21,10 +21,10 @@
   <input type="text" name="id" value="${budgetTracker.getId()}" hidden="">
   Name:<input type="text" name="name" value="${name}" readonly><br>
   Total Budget: <input type="number" name="totalbudget" value="${budget}" readonly><br>
-  Transportation:<input type="number" name="transportationBudget" step="0.01"><br>
-  Accommodation:<input type="number" name="accomodationBudget" step="0.01"><br>
-  Meals:<input type="number" name="mealsBudget" step="0.01"><br>
-  Activities:<input type="number" name="activitiesBudget" step="0.01"><br>
+  Transportation:<input type="number" name="transportationBudget" step="0.01" value="${budgetTracker.getTransportationBudget()}"><br>
+  Accommodation:<input type="number" name="accommodationBudget" step="0.01" value="${budgetTracker.getAccommodationBudget()}"><br>
+  Meals:<input type="number" name="mealsBudget" step="0.01" value="${budgetTracker.getMealsBudget()}"><br>
+  Activities:<input type="number" name="activitiesBudget" step="0.01" value="${budgetTracker.getActivitiesBudget()}"><br>
   <button>Submit</button>
   <button type="reset">Cancel</button>
 </form>

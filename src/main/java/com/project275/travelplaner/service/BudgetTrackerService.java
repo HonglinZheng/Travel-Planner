@@ -31,12 +31,13 @@ public class BudgetTrackerService {
                 budgetTracker.setAccommodationBudget(0.0);
                 budgetTracker.setMealsBudget(0.0);
                 budgetTracker.setActivitiesBudget(0.0);
+
                 budgetTracker.setTrip(trip);
                 trip.setBudgetTrack(budgetTracker);
+                budgetTrackerRepo.save(budgetTracker);
             }
         }
-
-        budgetTrackerRepo.save(budgetTracker);
+        
         model.put("name", trip.getName());
         model.put("budget", trip.getBudget());
         model.put("budgetTracker", budgetTracker);
