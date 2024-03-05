@@ -49,4 +49,9 @@ public class ItineraryController {
     public String goToTripHome(@PathVariable int tripId, ModelMap model, HttpSession session){
         return itineraryService.goToTripHome(tripId, model, session);
     }
+
+    @PostMapping("/generate/{tripId}/{recommendationId}")
+    public String generateItinerary(@PathVariable int tripId, @PathVariable int recommendationId, ModelMap model, HttpSession session){
+        return itineraryService.generate(tripId, recommendationId, model, session);
+    }
 }

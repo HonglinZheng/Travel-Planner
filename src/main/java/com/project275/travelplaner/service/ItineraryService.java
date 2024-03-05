@@ -3,7 +3,9 @@ package com.project275.travelplaner.service;
 import com.project275.travelplaner.entity.Itinerary;
 import com.project275.travelplaner.entity.Trip;
 import com.project275.travelplaner.entity.User;
+import com.project275.travelplaner.entity.Recommendation;
 import com.project275.travelplaner.repository.ItineraryRepository;
+import com.project275.travelplaner.repository.RecommendationRepository;
 import com.project275.travelplaner.repository.TripRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,10 @@ public class ItineraryService {
 
     @Autowired
     private ItineraryRepository itineraryRepo;
+
+    @Autowired
+    private RecommendationRepository recommendationRepo;
+
 
     public String addItinerary(int tripId, String idate, Itinerary itinerary, ModelMap model, HttpSession session){
         if (session.getAttribute("user") == null) {
@@ -116,6 +122,23 @@ public class ItineraryService {
         Trip trip = tripRepo.findById(tripId).orElse(null);
         model.put("itineraries", trip.getItineraries());
         model.put("tripId", tripId);
+        return "ViewItineraries";
+    }
+
+    public String generate(@PathVariable int tripId, @PathVariable int recommendationId, ModelMap model, HttpSession session){
+        Recommendation recommendation = recommendationRepo.findById(recommendationId).orElse(null);
+        Trip trip = tripRepo.findById(tripId).orElse(null);
+
+        Itinerary itinerary = new Itinerary();
+        if (recommendation != null) {
+            itinerary.setTrip(trip);
+            trip.getItineraries().add(itinerary);
+            itinerary.setLocation(recommendation.getCity());
+            itinerary.setName(recommendation.getRecommendation());
+            itineraryRepo.save(itinerary);
+            model.addAttribute("generatedItinerary", itinerary);
+        }
+
         return "ViewItineraries";
     }
 }

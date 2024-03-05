@@ -8,6 +8,7 @@
     <title>View Itinerary</title>
 </head>
 <body>
+<a href="/itinerary/search/${tripId}"><button>Search</button></a>
 <h1 style="color:red">${neg}</h1>
 <h1 style="color:green">${pos}</h1>
 <%
