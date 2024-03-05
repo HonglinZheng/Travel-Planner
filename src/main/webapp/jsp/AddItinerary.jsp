@@ -29,6 +29,6 @@
     <button type="reset">Cancel</button>
 </form>
 <br>
-<a href="/trip/home"><button>Back</button></a>
+<a href="/itinerary/home/${tripId}"><button>Back</button></a>
 </body>
 </html>

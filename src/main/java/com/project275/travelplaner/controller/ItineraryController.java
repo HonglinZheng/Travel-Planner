@@ -45,4 +45,8 @@ public class ItineraryController {
     public String updateTrip(@PathVariable int tripId, @RequestParam String idate, Itinerary itinerary, ModelMap model, HttpSession session){
         return itineraryService.updateItinerary(tripId, idate, itinerary, model, session);
     }
+    @GetMapping("/home/{tripId}")
+    public String goToTripHome(@PathVariable int tripId, ModelMap model, HttpSession session){
+        return itineraryService.goToTripHome(tripId, model, session);
+    }
 }

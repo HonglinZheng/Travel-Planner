@@ -2,12 +2,15 @@ package com.project275.travelplaner.service;
 
 import com.project275.travelplaner.entity.Itinerary;
 import com.project275.travelplaner.entity.Trip;
+import com.project275.travelplaner.entity.User;
 import com.project275.travelplaner.repository.ItineraryRepository;
 import com.project275.travelplaner.repository.TripRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,6 +103,17 @@ public class ItineraryService {
         itineraryRepo.save(itinerary);
 
         model.put("pos", "Itinerary Updated Successfully");
+        model.put("itineraries", trip.getItineraries());
+        model.put("tripId", tripId);
+        return "ViewItineraries";
+    }
+
+    public String goToTripHome(@PathVariable int tripId, ModelMap model, HttpSession session){
+        if (session.getAttribute("user") == null) {
+            model.put("neg", "Invalid Session");
+            return "Home";
+        }
+        Trip trip = tripRepo.findById(tripId).orElse(null);
         model.put("itineraries", trip.getItineraries());
         model.put("tripId", tripId);
         return "ViewItineraries";
