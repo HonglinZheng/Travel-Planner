@@ -27,17 +27,12 @@ public class BudgetTrackerService {
             if (budgetTracker == null) {
                 budgetTracker = new BudgetTracker();
                 budgetTracker.setTotalBudget(trip.getBudget());
-                budgetTracker.setTransportationBudget(0.0);
-                budgetTracker.setAccommodationBudget(0.0);
-                budgetTracker.setMealsBudget(0.0);
-                budgetTracker.setActivitiesBudget(0.0);
-
                 budgetTracker.setTrip(trip);
                 trip.setBudgetTrack(budgetTracker);
                 budgetTrackerRepo.save(budgetTracker);
             }
         }
-        
+
         model.put("name", trip.getName());
         model.put("budget", trip.getBudget());
         model.put("budgetTracker", budgetTracker);

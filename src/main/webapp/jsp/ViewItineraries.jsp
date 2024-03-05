@@ -22,6 +22,7 @@
         <th>WeatherForecast</th>
         <th>Detail</th>
         <th>Safety Tips</th>
+        <th>Expense</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -36,6 +37,7 @@
         <th><%=i.getWeatherForecast()%></th>
         <th><%=i.getDetail()%></th>
         <th><%=i.getSafetyTips()%></th>
+        <th><a href="/itinerary/expenseLog/${tripId}/<%=i.getId()%>"><button>Edit</button></a></th>
         <th><a href="/itinerary/edit/${tripId}/<%=i.getId()%>"><button>Edit</button></a></th>
         <th><a href="/itinerary/delete/${tripId}/<%=i.getId()%>"><button>Delete</button></a></th>
     </tr>

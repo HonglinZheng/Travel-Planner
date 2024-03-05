@@ -20,6 +20,8 @@ public class Itinerary {
     String detail;
     String weatherForecast;
     String safetyTips;
+    @OneToOne
+    Expense expenseLog;
 
     @ManyToOne
     Trip trip;
