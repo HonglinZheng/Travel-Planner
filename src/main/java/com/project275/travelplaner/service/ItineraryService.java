@@ -128,17 +128,18 @@ public class ItineraryService {
     public String generate(@PathVariable int tripId, @PathVariable int recommendationId, ModelMap model, HttpSession session){
         Recommendation recommendation = recommendationRepo.findById(recommendationId).orElse(null);
         Trip trip = tripRepo.findById(tripId).orElse(null);
-
+        LocalDate startDate = trip.getStartDate();
         Itinerary itinerary = new Itinerary();
-        if (recommendation != null) {
-            itinerary.setTrip(trip);
-            trip.getItineraries().add(itinerary);
-            itinerary.setLocation(recommendation.getCity());
-            itinerary.setName(recommendation.getRecommendation());
-            itineraryRepo.save(itinerary);
-            model.addAttribute("generatedItinerary", itinerary);
-        }
+        itinerary.setTrip(trip);
+        itinerary.setDate(startDate);
+        trip.getItineraries().add(itinerary);
+        itinerary.setLocation(recommendation.getCity());
+        itinerary.setName(recommendation.getRecommendation());
+        itineraryRepo.save(itinerary);
+        //model.addAttribute("generatedItinerary", itinerary);
 
+        model.put("itineraries", trip.getItineraries());
+        model.put("tripId", tripId);
         return "ViewItineraries";
     }
 }

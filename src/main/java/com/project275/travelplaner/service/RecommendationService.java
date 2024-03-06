@@ -18,10 +18,10 @@ public class RecommendationService {
         return "Search";
     }
 
-    public String getRecommendation(int tripId, ModelMap model, HttpSession session){
-        String city = (String) model.get("city");
+    public String getRecommendation(int tripId, String city, ModelMap model, HttpSession session){
         List<Recommendation> recommendations = RecommendationRepo.findByCity(city);
-        model.put("recommendations", recommendations);
+        model.addAttribute("recommendations", recommendations);
+//        model.put("recommendations", recommendations);
         model.put("tripId", tripId);
         model.put("city", city);
         return "Recommendations";

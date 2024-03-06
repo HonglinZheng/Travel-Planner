@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Table(name = "recommendations")
 public class Recommendation {
     @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+    int id;
     @Column(unique = true)
-    private String city;
-    private String recommendation;
+    String city;
+    String recommendation;
 }

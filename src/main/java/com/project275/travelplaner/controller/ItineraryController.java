@@ -50,7 +50,7 @@ public class ItineraryController {
         return itineraryService.goToTripHome(tripId, model, session);
     }
 
-    @PostMapping("/generate/{tripId}/{recommendationId}")
+    @RequestMapping("/generate/{tripId}/{recommendationId}")
     public String generateItinerary(@PathVariable int tripId, @PathVariable int recommendationId, ModelMap model, HttpSession session){
         return itineraryService.generate(tripId, recommendationId, model, session);
     }

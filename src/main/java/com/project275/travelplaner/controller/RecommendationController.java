@@ -31,7 +31,7 @@ public class RecommendationController {
 
 
     @GetMapping("/recommendation/{tripId}")
-    public String getRecommendation(@PathVariable int tripId, ModelMap model, HttpSession session){
-        return recommendationService.getRecommendation(tripId, model, session);
+    public String getRecommendation(@PathVariable int tripId, @RequestParam String city, ModelMap model, HttpSession session){
+        return recommendationService.getRecommendation(tripId, city, model, session);
     }
 }

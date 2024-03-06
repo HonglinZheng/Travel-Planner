@@ -7,6 +7,7 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.project275.travelplaner.entity.Recommendation"%>
+<%@page import="com.project275.travelplaner.entity.Itinerary"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@
     %>
     <tr>
         <td><%= recommendation.getRecommendation() %></td>
-        <td><a href="/itinerary/generate/{tripId}/<%=recommendation.getId()%>"><button>Confirm</button></a></td>
+        <td><a href="/itinerary/generate/${tripId}/<%=recommendation.getId()%>"><button>Confirm</button></a></td>
     </tr>
     <%
         }
