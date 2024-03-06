@@ -95,6 +95,7 @@ public class ItineraryService {
             return "Home";
         }
         Trip trip = tripRepo.findById(tripId).orElse(null);
+        Itinerary oItinerary = itineraryRepo.findById(itinerary.getId()).orElse(null);
         LocalDate startDate = trip.getStartDate();
         LocalDate endDate = trip.getEndDate();
         LocalDate date = LocalDate.parse(idate);
@@ -104,6 +105,7 @@ public class ItineraryService {
             model.put("tripId", tripId);
             return "ViewItineraries";
         }
+        itinerary.setExpenseLog(oItinerary.getExpenseLog());
         itinerary.setDate(date);
         itinerary.setTrip(trip);
         itineraryRepo.save(itinerary);
