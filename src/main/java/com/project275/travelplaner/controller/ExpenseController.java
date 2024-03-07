@@ -25,11 +25,11 @@ public class ExpenseController {
 
     @GetMapping("/expenseLog/{tripId}/{itineraryId}")
     public String getExpense(@PathVariable int tripId, @PathVariable int itineraryId, ModelMap model) {
-        return expenseService.editExpense(tripId, itineraryId, model);
+        return expenseService.gotoEditExpense(tripId, itineraryId, model);
     }
 
     @PostMapping("/expenseLog/{tripId}/{itineraryId}")
     public String editExpense(@PathVariable int tripId, @PathVariable int itineraryId, Expense expenseLog, ModelMap model, HttpSession session){
-        return expenseService.addExpense(tripId, itineraryId, expenseLog, model, session);
+        return expenseService.updateExpense(tripId, itineraryId, expenseLog, model, session);
     }
 }

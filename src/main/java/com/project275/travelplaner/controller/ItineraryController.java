@@ -21,8 +21,7 @@ public class ItineraryController {
 
     @GetMapping("/add/{tripId}")
     public String gotoAddItinerary(@PathVariable int tripId, ModelMap model) {
-        model.put("tripId", tripId);
-        return "AddItinerary";
+        return itineraryService.gotoAddItinerary(tripId, model);
     }
 
     @PostMapping("/add/{tripId}")
