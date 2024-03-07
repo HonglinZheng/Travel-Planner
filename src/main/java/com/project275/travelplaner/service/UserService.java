@@ -38,6 +38,7 @@ public class UserService {
                 session.setAttribute("user", user.getId());
                 session.setMaxInactiveInterval(1200);
                 model.put("trips", user.getTrips());
+                model.put("userName", user.getName());
                 return "UserHome";
             }
             else {
