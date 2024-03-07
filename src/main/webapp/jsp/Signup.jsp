@@ -1,20 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="ISO-8859-1">
-    <title>Signup</title>
-</head>
-<body>
-<h1 style="color:red">${neg}</h1>
-<h1 style="color:green">${pos}</h1>
+<%@ include file="common/header.jspf"%>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" >Travel Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/trip/home">Home <span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
 <form action="/user/signup" method="post"
       enctype="multipart/form-data">
     <fieldset style="width: 40vw">
-        <legend>Student Signup</legend>
-        <table>
-
+        <h2> Join Us </h2>
+        <table class="table">
             <tr>
                 <th>Name:</th>
                 <th><input type="text" name="name" required></th>
@@ -42,14 +50,13 @@
 
             <tr>
                 <th><button>Signup</button></th>
-                <th><button type="reset">Cancel</button></th>
+                <th><button type="reset">Reset</button></th>
             </tr>
 
         </table>
-        <br> <a href="/"><button type="button">Back</button></a>
     </fieldset>
 </form>
-
+</div>
 
 
 </body>

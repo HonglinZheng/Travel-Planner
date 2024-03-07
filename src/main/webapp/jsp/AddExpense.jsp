@@ -1,33 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sixue
-  Date: 2024/3/4
-  Time: 19:26
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="ISO-8859-1">
-  <title>Edit Budget</title>
-</head>
-<body>
-<h1 style="color: red">${neg}</h1>
-<h1 style="color: green">${pos}</h1>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+
+<div class="container">
 <h1>Expense Log</h1>
+<h2>----the itinerary of ${name}</h2>
 <form action="/itinerary/expenseLog/${tripId}/${itinerary.getId()}" method="post" enctype="multipart/form-data">
-  <input type="text" name="id" value="${itinerary.getId()}" hidden="">
-  Name:<input type="text" name="name" value="${name}" readonly><br>
-  Transportation:<input type="number" name="transportationExpense" step="0.01" value="${expenseLog.getTransportationExpense()}"><br>
-  Accommodation:<input type="number" name="accommodationExpense" step="0.01" value="${expenseLog.getAccommodationExpense()}"><br>
-  Meals:<input type="number" name="mealsExpense" step="0.01" value="${expenseLog.getMealsExpense()}"><br>
-  Activities:<input type="number" name="activitiesExpense" step="0.01" value="${expenseLog.getActivitiesExpense()}"><br>
-  <button>Submit</button>
-  <button type="reset">Cancel</button>
+    <input type="text" name="id" value="${itinerary.getId()}" hidden="">
+    <div class="form-group">
+        <label>Transportation Fee</label>
+        $<input type="number" name="transportationExpense" step="0.01" placeholder="Enter values" value="${expenseLog.getTransportationExpense()}" required>
+    </div>
+    <div class="form-group">
+        <label>Accommodation Fee</label>
+        $<input type="number" name="accommodationExpense" step="0.01" placeholder="Enter values" value="${expenseLog.getAccommodationExpense()}" required>
+    </div>
+    <div class="form-group">
+        <label>Meals Fee</label>
+        $<input type="number" name="mealsExpense" step="0.01" placeholder="Enter values" value="${expenseLog.getMealsExpense()}" required>
+    </div>
+    <div class="form-group">
+        <label>Activities Fee</label>
+        $<input type="number" name="activitiesExpense" step="0.01" placeholder="Enter values" value="${expenseLog.getActivitiesExpense()}" required>
+    </div>
+
+    <button>Submit</button>
+    <button type="reset">Reset</button>
 </form>
+</div>
+
 <br>
-<a href="/itinerary/home/${tripId}"><button>Back</button></a>
+<div class="container">
+<a href="/itinerary/home/${tripId}"><button>Back to itineraries</button></a>
+</div>
 </body>
 </html>

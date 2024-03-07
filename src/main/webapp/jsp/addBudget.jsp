@@ -1,34 +1,38 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sixue
-  Date: 2024/3/4
-  Time: 11:37
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="ISO-8859-1">
-  <title>Edit Budget</title>
-</head>
-<body>
-<h1 style="color: red">${neg}</h1>
-<h1 style="color: green">${pos}</h1>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+
+<div class="container">
 <h1>Edit Budget Details</h1>
 <form action="/trip/editBudget/${tripId}" method="post" enctype="multipart/form-data">
-  <input type="text" name="id" value="${budgetTracker.getId()}" hidden="">
-  Name:<input type="text" name="name" value="${name}" readonly><br>
-  Total Budget: <input type="number" name="totalbudget" value="${budget}" readonly><br>
-  Transportation:<input type="number" name="transportationBudget" step="0.01" value="${budgetTracker.getTransportationBudget()}"><br>
-  Accommodation:<input type="number" name="accommodationBudget" step="0.01" value="${budgetTracker.getAccommodationBudget()}"><br>
-  Meals:<input type="number" name="mealsBudget" step="0.01" value="${budgetTracker.getMealsBudget()}"><br>
-  Activities:<input type="number" name="activitiesBudget" step="0.01" value="${budgetTracker.getActivitiesBudget()}"><br>
-  <button>Submit</button>
-  <button type="reset">Cancel</button>
+    <input type="text" name="id" value="${budgetTracker.getId()}" hidden="">
+    <div class="form-group">
+        <label>Total Budget</label>
+        $<input type="number" name="totalbudget" value="${budget}" readonly>
+    </div>
+    <div class="form-group">
+        <label>Transportation Budget</label>
+        $<input type="number" name="transportationBudget" step="0.01" value="${budgetTracker.getTransportationBudget()}"><br>
+    </div>
+    <div class="form-group">
+        <label>Accommodation Budget</label>
+        $<input type="number" name="accommodationBudget" step="0.01" value="${budgetTracker.getAccommodationBudget()}"><br>
+    </div>
+    <div class="form-group">
+        <label>Meals Budget</label>
+        $<input type="number" name="mealsBudget" step="0.01" value="${budgetTracker.getMealsBudget()}"><br>
+    </div>
+    <div class="form-group">
+        <label>Activities Budget</label>
+        $Activities:<input type="number" name="activitiesBudget" step="0.01" value="${budgetTracker.getActivitiesBudget()}"><br>
+    </div>
+    <button>Submit</button>
+    <button type="reset">Reset</button>
 </form>
+</div>
+
 <br>
-<a href="/trip/home"><button>Back</button></a>
+<div class="container">
+    <a href="/trip/home"><button>Back to Trips</button></a>
+</div>
 </body>
 </html>

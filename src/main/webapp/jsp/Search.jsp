@@ -1,26 +1,49 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sixue
-  Date: 2024/3/5
-  Time: 10:51
-  To change this template use File | Settings | File Templates.
---%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Trip</title>
-</head>
-<body>
-<h1 style="color: red">${neg}</h1>
-<h1 style="color: green">${pos}</h1>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+<%@page import="java.util.List"%>
+
+<div class="container">
+<h1> Recommendation Page </h1>
+
+</div>
+<!--
+<div class="container">
+<%
+    List<String> cities = (List<String>) request.getAttribute("cities");
+%>
+    <table class="table">
+    <tr>
+          <th>Recommendation</th>
+          <th>Select</th>
+    </tr>
+    <%
+        for (String ct : cities) {
+    %>
+    <tr>
+        <td><%= ct %></td>
+        <td>lala</td>
+    </tr>
+
+    <%
+            }
+    %>
+</div>
+-->
+<div class="container">
 <form action="/itinerary/recommendation/${tripId}" method="get">
     <input type="text" name="id" value="${tripId}" hidden="">
-    Search City: <input type="text" name="city" required>
+    <div class="form-group">
+        <label>Search City</label>
+        <input type="text" name="city" required>
+    </div>
     <button>Search</button>
 </form>
+</div>
+
+
 <br>
-<a href="/itinerary/home/${tripId}"><button>Back</button></a>
+<div class="container">
+    <a href="/itinerary/home/${tripId}"><button>Back</button></a>
+</div>
 </body>
 </html>

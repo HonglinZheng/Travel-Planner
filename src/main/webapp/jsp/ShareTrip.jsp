@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Trip</title>
-</head>
-<body>
-<h1 style="color: red">${neg}</h1>
-<h1 style="color: green">${pos}</h1>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+
+
+<div class="container">
+<h1>Friend invitation!</h1>
+</div>
+
+<div class="container">
 <form action="/trip/share/${id}" method="post">
     Enter Email: <input type="text" name="email" required>
     <button>Submit</button>
 </form>
+</div>
 <br>
-<a href="/trip/home"><button>Back</button></a>
+<div class="container">
+<a href="/trip/home"><button>Cancel</button></a>
+<div>
 </body>
 </html>
