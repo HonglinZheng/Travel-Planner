@@ -33,6 +33,7 @@ public class TripService {
         if (startDate.isAfter(endDate)){
             model.put("neg", "Start Date Cannot Be After End Date");
             model.put("trips", curUser.getTrips());
+            model.put("userName", curUser.getName());
             return "UserHome";
         }
         trip.setStartDate(startDate);
@@ -43,6 +44,7 @@ public class TripService {
         userRepo.save(curUser);
         model.put("pos", "Trip Added Successfully");
         model.put("trips", curUser.getTrips());
+        model.put("userName", curUser.getName());
         return "UserHome";
     }
 
@@ -57,6 +59,7 @@ public class TripService {
         if (user == null) {
             model.put("neg", "The User Doesn't Exist");
             model.put("trips", curUser.getTrips());
+            model.put("userName", curUser.getName());
             return "UserHome";
         }
         Trip trip = tripRepo.findById(id).get();
@@ -66,6 +69,7 @@ public class TripService {
         userRepo.save(user);
         model.put("pos", "Trip Shared Successfully");
         model.put("trips", curUser.getTrips());
+        model.put("userName", curUser.getName());
         return "UserHome";
     }
 
@@ -80,6 +84,7 @@ public class TripService {
         if (trip == null){
             model.put("neg", "Trip Not Found");
             model.put("trips", curUser.getTrips());
+            model.put("userName", curUser.getName());
             return "UserHome";
         }
         Set<Trip> nTrips = new HashSet<>();
@@ -92,6 +97,7 @@ public class TripService {
         model.put("pos", "Trip Deleted Successfully");
         curUser = userRepo.findById(curUserId).get();
         model.put("trips", curUser.getTrips());
+        model.put("userName", curUser.getName());
         return "UserHome";
     }
 
@@ -106,6 +112,7 @@ public class TripService {
         if (trip == null){
             model.put("neg", "Trip Not Found");
             model.put("trips", curUser.getTrips());
+            model.put("userName", curUser.getName());
             return "UserHome";
         } else{
             model.put("trip", trip);
@@ -125,6 +132,7 @@ public class TripService {
         if (startDate.isAfter(endDate)){
             model.put("neg", "Start Date Cannot Be After End Date");
             model.put("trips", curUser.getTrips());
+            model.put("userName", curUser.getName());
             return "UserHome";
         }
         Trip oTrip = tripRepo.findById(trip.getId()).orElse(null);
@@ -136,6 +144,7 @@ public class TripService {
         model.put("pos", "Book Updated Successfully");
         curUser = userRepo.findById(curUserId).get();
         model.put("trips", curUser.getTrips());
+        model.put("userName", curUser.getName());
         return "UserHome";
     }
 
@@ -147,6 +156,7 @@ public class TripService {
         int curUserId = (int) session.getAttribute("user");
         User curUser = userRepo.findById(curUserId).get();
         model.put("trips", curUser.getTrips());
+        model.put("userName", curUser.getName());
         return "UserHome";
     }
 
@@ -158,6 +168,8 @@ public class TripService {
         Trip trip = tripRepo.findById(id).orElse(null);
         model.put("itineraries", trip.getItineraries());
         model.put("tripId", trip.getId());
+        model.put("trip",trip);
+        model.put("budget", trip.getBudget());
         return "ViewItineraries";
     }
 }
