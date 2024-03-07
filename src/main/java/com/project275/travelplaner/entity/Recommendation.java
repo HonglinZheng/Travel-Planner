@@ -10,9 +10,27 @@ import org.springframework.stereotype.Component;
 public class Recommendation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     int id;
     @Column(unique = true)
     String city;
     String recommendation;
+	public int getId() {
+		return id;
+	}
+	public String getCity() {
+		return city;
+	}
+	public String getRecommendation() {
+		return recommendation;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public void setRecommendation(String recommendation) {
+		this.recommendation = recommendation;
+	}
+    
 }

@@ -28,4 +28,62 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
     Set<Trip> trips = new HashSet<>();
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public Set<Trip> getTrips() {
+		return trips;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+
+	public void setTrips(Set<Trip> trips) {
+		this.trips = trips;
+	}
+    
+    
 }
