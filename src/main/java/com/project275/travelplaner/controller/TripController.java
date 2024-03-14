@@ -34,8 +34,7 @@ public class TripController {
 
     @GetMapping("/share/{id}")
     public String gotoShareTrip(@PathVariable int id, ModelMap model) {
-        model.put("id", id);
-        return "ShareTrip";
+        return tripService.gotoShareTrip(id,model);
     }
 
     @PostMapping("/share/{id}")

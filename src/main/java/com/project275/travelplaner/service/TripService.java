@@ -172,4 +172,16 @@ public class TripService {
         model.put("budget", trip.getBudget());
         return "ViewItineraries";
     }
+
+    public String gotoShareTrip(int id, ModelMap model) {
+        model.put("id", id);
+        Trip trip = tripRepo.findById(id).get();
+        Set<User> users = trip.getUsers();
+        List<String> names = new ArrayList<>();
+        for (User user: users){
+            names.add(user.getName());
+        }
+        model.put("names", names);
+        return "ShareTrip";
+    }
 }
