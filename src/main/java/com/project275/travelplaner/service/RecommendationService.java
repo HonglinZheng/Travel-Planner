@@ -1,7 +1,7 @@
 package com.project275.travelplaner.service;
 import java.util.*;
 
-import com.project275.travelplaner.entity.Recommendation;
+import com.project275.travelplaner.entity.Recommend;
 import com.project275.travelplaner.repository.RecommendationRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class RecommendationService {
     }
 
     public String getRecommendation(int tripId, String city, ModelMap model, HttpSession session){
-        List<Recommendation> recommendations = RecommendationRepo.findByCity(city);
+        List<Recommend> recommendations = RecommendationRepo.findByCity(city);
         model.addAttribute("recommendations", recommendations);
 //        model.put("recommendations", recommendations);
         model.put("tripId", tripId);

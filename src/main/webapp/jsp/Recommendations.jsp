@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.project275.travelplaner.entity.Recommendation"%>
+<%@page import="com.project275.travelplaner.entity.Recommend"%>
 <%@page import="com.project275.travelplaner.entity.Itinerary"%>
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
@@ -11,7 +11,7 @@
 
 <div class="container">
 <%
-    List<Recommendation> recommendations = (List<Recommendation>) request.getAttribute("recommendations");
+    List<Recommend> recommendations = (List<Recommend>) request.getAttribute("recommendations");
 %>
 <table class="table">
     <tr>
@@ -19,13 +19,21 @@
         <th>Select</th>
     </tr>
     <%
-        for (Recommendation recommendation : recommendations) {
+            if (recommendations.size()==0) {
+    %>
+    <tr>
+            <td>No recommendations found; please search again!</td>
+    </tr>
+    <%
+        } else {
+            for (Recommend recommendation : recommendations) {
     %>
     <tr>
         <td><%= recommendation.getRecommendation() %></td>
         <td><a href="/itinerary/generate/${tripId}/<%=recommendation.getId()%>"><button>Confirm</button></a></td>
     </tr>
     <%
+            }
         }
     %>
 </table>

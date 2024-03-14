@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Data
 @Table(name = "recommendations")
-public class Recommendation {
+public class Recommend {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
